@@ -161,7 +161,7 @@ export function getMetricsForPositionWindow(positionT0: Position, positionT1: Po
  * @param startDateTimestamp // day to start tracking at
  * @param currentPairData // current stat of the pair
  * @param pairSnapshots // history of entries and exits for lp on this pair
- * @param currentETHPrice // current price of eth used for usd conversions
+ * @param currentETHPrice // current price of ftm used for usd conversions
  */
 export async function getHistoricalPairReturns(startDateTimestamp, currentPairData, pairSnapshots, currentETHPrice) {
   // catch case where data not puplated yet

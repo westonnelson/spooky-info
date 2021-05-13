@@ -39,10 +39,10 @@ export function getTimeframe(timeWindow) {
 /*
 +
       (remove ? `remove` : `add`) +
-      `/${token0Address === '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83' ? 'ETH' : token0Address}/${'ETH'}`
+      `/${token0Address === '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83' ? 'FTM' : token0Address}/${'FTM'}`
        +
       (remove ? `remove` : `add`) +
-      `/${token0Address === '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83' ? 'ETH' : token0Address}/${token1Address === '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83' ? 'ETH' : token1Address
+      `/${token0Address === '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83' ? 'FTM' : token0Address}/${token1Address === '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83' ? 'FTM' : token1Address
       }`
       */
 export function getPoolLink(token0Address, token1Address = null, remove = false) {
@@ -65,8 +65,8 @@ export function getSwapLink(token0Address, token1Address = null) {
   }
 }
 /*
-?inputCurrency=${token0Address === '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83' ? 'ETH' : token0Address
-      }&outputCurrency=${token1Address === '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83' ? 'ETH' : token1Address}`
+?inputCurrency=${token0Address === '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83' ? 'FTM' : token0Address
+      }&outputCurrency=${token1Address === '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83' ? 'FTM' : token1Address}`
       */
 
 export function getMiningPoolLink(token0Address) {
@@ -79,7 +79,7 @@ export function getUniswapAppLink(linkVariable) {
     return baseUniswapUrl
   }
 
-  return `${baseUniswapUrl}/ETH/${linkVariable}`
+  return `${baseUniswapUrl}/FTM/${linkVariable}`
 }
 
 export function localNumber(val) {
@@ -258,7 +258,7 @@ export async function getShareValueOverTime(pairAddress, timestamps) {
     }
   }
 
-  // add eth prices
+  // add ftm prices
   let index = 0
   for (var brow in result?.data) {
     let timestamp = brow.split('b')[1]

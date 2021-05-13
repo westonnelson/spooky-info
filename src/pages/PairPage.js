@@ -29,7 +29,7 @@ import { useMedia } from 'react-use'
 import DoubleTokenLogo from '../components/DoubleLogo'
 import TokenLogo from '../components/TokenLogo'
 import { Hover } from '../components'
-import { useEthPrice } from '../contexts/GlobalData'
+import { useFtmPrice } from '../contexts/GlobalData'
 import Warning from '../components/Warning'
 import { usePathDismissed, useSavedPairs } from '../contexts/LocalStorage'
 
@@ -163,7 +163,7 @@ function PairPage({ pairAddress, history }) {
       : '-'
 
   // token data for usd
-  const [ftmPrice] = useEthPrice()
+  const [ftmPrice] = useFtmPrice()
   const token0USD =
     token0?.derivedFTM && ftmPrice ? formattedNum(parseFloat(token0.derivedFTM) * parseFloat(ftmPrice), true) : ''
 

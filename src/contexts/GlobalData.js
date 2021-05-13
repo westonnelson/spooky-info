@@ -138,7 +138,7 @@ export default function Provider({ children }) {
     })
   }, [])
 
-  const updateEthPrice = useCallback((ftmPrice, oneDayPrice, ethPriceChange) => {
+  const updateFtmPrice = useCallback((ftmPrice, oneDayPrice, ethPriceChange) => {
     dispatch({
       type: UPDATE_ETH_PRICE,
       payload: {
@@ -184,7 +184,7 @@ export default function Provider({ children }) {
             update,
             updateTransactions,
             updateChart,
-            updateEthPrice,
+            updateFtmPrice,
             updateTopLps,
             updateAllPairsInUniswap,
             updateAllTokensInUniswap,
@@ -196,7 +196,7 @@ export default function Provider({ children }) {
           updateTransactions,
           updateTopLps,
           updateChart,
-          updateEthPrice,
+          updateFtmPrice,
           updateAllPairsInUniswap,
           updateAllTokensInUniswap,
         ]
@@ -209,13 +209,13 @@ export default function Provider({ children }) {
 
 /**
  * Gets all the global data for the overview page.
- * Needs current eth price and the old eth price to get
+ * Needs current ftm price and the old ftm price to get
  * 24 hour USD changes.
  * @param {*} ftmPrice
- * @param {*} oldEthPrice
+ * @param {*} oldFtmPrice
  */
 
-async function getGlobalData(ftmPrice, oldEthPrice) {
+async function getGlobalData(ftmPrice, oldFtmPrice) {
   // data for each day , historic data used for % changes
   let data = {}
   let oneDayData = {}
@@ -292,7 +292,7 @@ async function getGlobalData(ftmPrice, oldEthPrice) {
       data.totalLiquidityUSD = data.totalLiquidityFTM * ftmPrice
       const liquidityChangeUSD = getPercentChange(
         data.totalLiquidityFTM * ftmPrice,
-        oneDayData.totalLiquidityFTM * oldEthPrice
+        oneDayData.totalLiquidityFTM * oldFtmPrice
       )
 
       // add relevant fields with the calculated amounts
@@ -462,7 +462,7 @@ const getGlobalTransactions = async () => {
 /**
  * Gets the current price  of FTM, 24 hour price, and % change between them
  */
-const getEthPrice = async () => {
+const getFtmPrice = async () => {
   const utcCurrentTime = dayjs()
   const utcOneDayBack = utcCurrentTime.subtract(1, 'day').startOf('minute').unix()
 
@@ -556,7 +556,7 @@ async function getAllTokensOnUniswap() {
  */
 export function useGlobalData() {
   const [state, { update, updateAllPairsInUniswap, updateAllTokensInUniswap }] = useGlobalDataContext()
-  const [ftmPrice, oldEthPrice] = useEthPrice()
+  const [ftmPrice, oldFtmPrice] = useFtmPrice()
 
   const data = state?.globalData
 
@@ -564,7 +564,7 @@ export function useGlobalData() {
 
   useEffect(() => {
     async function fetchData() {
-      let globalData = await getGlobalData(ftmPrice, oldEthPrice)
+      let globalData = await getGlobalData(ftmPrice, oldFtmPrice)
 
       globalData && update(globalData)
 
@@ -574,10 +574,10 @@ export function useGlobalData() {
       let allTokens = await getAllTokensOnUniswap()
       updateAllTokensInUniswap(allTokens)
     }
-    if (!data && ftmPrice && oldEthPrice) {
+    if (!data && ftmPrice && oldFtmPrice) {
       fetchData()
     }
-  }, [ftmPrice, oldEthPrice, update, data, updateAllPairsInUniswap, updateAllTokensInUniswap])
+  }, [ftmPrice, oldFtmPrice, update, data, updateAllPairsInUniswap, updateAllTokensInUniswap])
 
   return data || {}
 }
@@ -640,21 +640,21 @@ export function useGlobalTransactions() {
   return transactions
 }
 
-export function useEthPrice() {
-  const [state, { updateEthPrice }] = useGlobalDataContext()
+export function useFtmPrice() {
+  const [state, { updateFtmPrice }] = useGlobalDataContext()
   const ftmPrice = state?.[ETH_PRICE_KEY]
-  const ethPriceOld = state?.['oneDayPrice']
+  const ftmPriceOld = state?.['oneDayPrice']
   useEffect(() => {
-    async function checkForEthPrice() {
+    async function checkForFtmPrice() {
       if (!ftmPrice) {
-        let [newPrice, oneDayPrice, priceChange] = await getEthPrice()
-        updateEthPrice(newPrice, oneDayPrice, priceChange)
+        let [newPrice, oneDayPrice, priceChange] = await getFtmPrice()
+        updateFtmPrice(newPrice, oneDayPrice, priceChange)
       }
     }
-    checkForEthPrice()
-  }, [ftmPrice, updateEthPrice])
+    checkForFtmPrice()
+  }, [ftmPrice, updateFtmPrice])
 
-  return [ftmPrice, ethPriceOld]
+  return [ftmPrice, ftmPriceOld]
 }
 
 export function useAllPairsInUniswap() {
