@@ -28,8 +28,8 @@ export default function GlobalStats() {
   const [showPriceCard, setShowPriceCard] = useState(false)
 
   const { oneDayVolumeUSD, oneDayTxns, pairCount } = useGlobalData()
-  const [ethPrice] = useEthPrice()
-  const formattedEthPrice = ethPrice ? formattedNum(ethPrice, true) : '-'
+  const [ftmPrice] = useEthPrice()
+  const formattedEthPrice = ftmPrice ? formattedNum(ftmPrice, true) : '-'
   const oneDayFees = oneDayVolumeUSD ? formattedNum(oneDayVolumeUSD * 0.002, true) : ''
 
   return (

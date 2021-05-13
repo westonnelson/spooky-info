@@ -7,11 +7,8 @@
     "patch": 0
   },
   "tags": {},
-  "logoURI": "http://spookyswap.finance/images/tokens/BOO.png",
-  "keywords": [
-    "spookyswap",
-    "default"
-  ],
+  "logoURI": "http://assets.spookyswap.finance/tokens/BOO.png",
+  "keywords": ["spookyswap", "default"],
   "tokens": [
     {
       "name": "Aave",
@@ -43,7 +40,7 @@
       "address": "0x841FAD6EAe12c286d1Fd18d1d525DFfA75C7EFFE",
       "chainId": 250,
       "decimals": 18,
-      "logoURI": "http://spookyswap.finance/images/tokens/BOO.png"
+      "logoURI": "https://assets.spookyswap.finance/tokens/BOO.png"
     },
     {
       "name": "Cover Protocol",
@@ -110,14 +107,6 @@
       "logoURI": "https://assets.coingecko.com/coins/images/877/large/chainlink-new-logo.png"
     },
     {
-      "name": "Saffron",
-      "symbol": "SFI",
-      "address": "0x924828a9Fb17d47D0eb64b57271D10706699Ff11",
-      "chainId": 250,
-      "decimals": 18,
-      "logoURI": "https://assets.coingecko.com/coins/images/13117/large/sfi_red_250px.png"
-    },
-    {
       "name": "Synthetix Network",
       "symbol": "SNX",
       "address": "0x56ee926bD8c72B2d5fa1aF4d9E4Cbb515a1E3Adc",
@@ -179,7 +168,39 @@
       "address": "0x09e145A1D53c0045F41aEEf25D8ff982ae74dD56",
       "chainId": 250,
       "decimals": 0,
-      "logoURI": "https://spookyswap.finance/images/tokens/ZOO.png"
+      "logoURI": "https://assets.spookyswap.finance/tokens/ZOO.png"
+    },
+    {
+      "name": "Frax Share",
+      "symbol": "FXS",
+      "address": "0x82F8Cb20c14F134fe6Ebf7aC3B903B2117aAfa62",
+      "chainId": 250,
+      "decimals": 18,
+      "logoURI": "https://assets.coingecko.com/coins/images/13423/large/frax_share.png"
+    },
+    {
+      "name": "MMToken",
+      "symbol": "MM",
+      "address": "0xbFaf328Fe059c53D936876141f38089df0D1503D",
+      "chainId": 250,
+      "decimals": 18,
+      "logoURI": "https://assets.spookyswap.finance/tokens/MM.png"
+    },
+    {
+      "name": "Binance Coin",
+      "symbol": "BNB",
+      "address": "0xD67de0e0a0Fd7b15dC8348Bb9BE742F3c5850454",
+      "chainId": 250,
+      "decimals": 18,
+      "logoURI": "https://assets.coingecko.com/coins/images/825/large/binance-coin-logo.png"
+    },
+    {
+      "name": "Woofy",
+      "symbol": "WOOFY",
+      "address": "0xD0660cD418a64a1d44E9214ad8e459324D8157f1",
+      "chainId": 250,
+      "decimals": 12,
+      "logoURI": "https://raw.githubusercontent.com/yearn/yearn-assets/master/icons/tokens/0xD0660cD418a64a1d44E9214ad8e459324D8157f1/logo-128.png"
     }
   ]
 }

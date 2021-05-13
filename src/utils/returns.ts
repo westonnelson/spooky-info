@@ -224,8 +224,8 @@ export async function getHistoricalPairReturns(startDateTimestamp, currentPairDa
         reserve0: currentPairData.reserve0,
         reserve1: currentPairData.reserve1,
         reserveUSD: currentPairData.reserveUSD,
-        token0PriceUSD: currentPairData.token0.derivedETH * currentETHPrice,
-        token1PriceUSD: currentPairData.token1.derivedETH * currentETHPrice,
+        token0PriceUSD: currentPairData.token0.derivedFTM * currentETHPrice,
+        token1PriceUSD: currentPairData.token1.derivedFTM * currentETHPrice,
       }
     }
 
@@ -253,9 +253,9 @@ export async function getHistoricalPairReturns(startDateTimestamp, currentPairDa
  * For a given pair and user, get the return metrics
  * @param user
  * @param pair
- * @param ethPrice
+ * @param ftmPrice
  */
-export async function getLPReturnsOnPair(user: string, pair, ethPrice: number, snapshots) {
+export async function getLPReturnsOnPair(user: string, pair, ftmPrice: number, snapshots) {
   // initialize values
   const principal = await getPrincipalForUserPerPair(user, pair.id)
   let hodlReturn = 0
@@ -275,8 +275,8 @@ export async function getLPReturnsOnPair(user: string, pair, ethPrice: number, s
     reserve0: pair.reserve0,
     reserve1: pair.reserve1,
     reserveUSD: pair.reserveUSD,
-    token0PriceUSD: pair.token0.derivedETH * ethPrice,
-    token1PriceUSD: pair.token1.derivedETH * ethPrice,
+    token0PriceUSD: pair.token0.derivedFTM * ftmPrice,
+    token1PriceUSD: pair.token1.derivedFTM * ftmPrice,
   }
 
   for (const index in snapshots) {

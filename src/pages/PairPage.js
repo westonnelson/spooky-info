@@ -163,12 +163,12 @@ function PairPage({ pairAddress, history }) {
       : '-'
 
   // token data for usd
-  const [ethPrice] = useEthPrice()
+  const [ftmPrice] = useEthPrice()
   const token0USD =
-    token0?.derivedETH && ethPrice ? formattedNum(parseFloat(token0.derivedETH) * parseFloat(ethPrice), true) : ''
+    token0?.derivedFTM && ftmPrice ? formattedNum(parseFloat(token0.derivedFTM) * parseFloat(ftmPrice), true) : ''
 
   const token1USD =
-    token1?.derivedETH && ethPrice ? formattedNum(parseFloat(token1.derivedETH) * parseFloat(ethPrice), true) : ''
+    token1?.derivedFTM && ftmPrice ? formattedNum(parseFloat(token1.derivedFTM) * parseFloat(ftmPrice), true) : ''
 
   // rates
   const token0Rate = reserve0 && reserve1 ? formattedNum(reserve1 / reserve0) : '-'
@@ -311,7 +311,7 @@ function PairPage({ pairAddress, history }) {
                   <TokenLogo address={token0?.id} size={'16px'} />
                   <TYPE.main fontSize={'16px'} lineHeight={1} fontWeight={500} ml={'4px'}>
                     {token0 && token1
-                      ? `1 ${formattedSymbol0} = ${token0Rate} ${formattedSymbol1} ${parseFloat(token0?.derivedETH) ? '(' + token0USD + ')' : ''
+                      ? `1 ${formattedSymbol0} = ${token0Rate} ${formattedSymbol1} ${parseFloat(token0?.derivedFTM) ? '(' + token0USD + ')' : ''
                       }`
                       : '-'}
                   </TYPE.main>
@@ -322,7 +322,7 @@ function PairPage({ pairAddress, history }) {
                   <TokenLogo address={token1?.id} size={'16px'} />
                   <TYPE.main fontSize={'16px'} lineHeight={1} fontWeight={500} ml={'4px'}>
                     {token0 && token1
-                      ? `1 ${formattedSymbol1} = ${token1Rate} ${formattedSymbol0}  ${parseFloat(token1?.derivedETH) ? '(' + token1USD + ')' : ''
+                      ? `1 ${formattedSymbol1} = ${token1Rate} ${formattedSymbol0}  ${parseFloat(token1?.derivedFTM) ? '(' + token1USD + ')' : ''
                       }`
                       : '-'}
                   </TYPE.main>
