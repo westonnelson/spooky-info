@@ -39,17 +39,19 @@ export default function Title() {
   const below1080 = useMedia('(max-width: 1080px)')
 
   return (
-    <TitleWrapper onClick={() => history.push('/')}>
+    <TitleWrapper>
       <Flex alignItems="center" style={{ justifyContent: 'space-between' }}>
         <RowFixed>
           <UniIcon id="link" onClick={() => history.push('/')}>
-            <img width={'160px'} src={Logo} alt="logo" />
+            <img width={!below1080 ? '160px' : '80px'} src={Logo} alt="logo" />
           </UniIcon>
         </RowFixed>
         {below1080 && (
           <RowFixed style={{ alignItems: 'flex-end' }}>
             <BasicLink to="/home">
-              <Option activeText={history.location.pathname === '/home' ?? undefined}>Overview</Option>
+              <Option activeText={history.location.pathname === '/home' ?? undefined}>
+                Overview
+              </Option>
             </BasicLink>
             <BasicLink to="/tokens">
               <Option

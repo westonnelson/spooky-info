@@ -36,38 +36,35 @@ export function getTimeframe(timeWindow) {
   }
   return utcStartTime
 }
-/*
-+
-      (remove ? `remove` : `add`) +
-      `/${token0Address === '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83' ? 'FTM' : token0Address}/${'FTM'}`
-       +
-      (remove ? `remove` : `add`) +
-      `/${token0Address === '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83' ? 'FTM' : token0Address}/${token1Address === '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83' ? 'FTM' : token1Address
-      }`
-      */
+
 export function getPoolLink(token0Address, token1Address = null, remove = false) {
+  console.log(token1Address)
   if (!token1Address) {
     return (
-      `https://spookyswap.finance/add`
+      `https://spookyswap.finance/`+
+      (remove ? `remove` : `add`) +
+      `/${token0Address === '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83' ? 'FTM' : token0Address}/${'FTM'}`
     )
+
   } else {
     return (
-      `https://spookyswap.finance/add`
+      `https://spookyswap.finance/`+
+      (remove ? `remove` : `add`) +
+      `/${token0Address === '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83' ? 'FTM' : token0Address}/`+
+      `${token1Address === '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83' ? 'FTM' : token1Address}`
     )
   }
 }
 
 export function getSwapLink(token0Address, token1Address = null) {
   if (!token1Address) {
-    return `https://spookyswap.finance/swap`
+    return `https://spookyswap.finance/swap?inputCurrency=${token0Address === '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83' ? 'FTM' : token0Address}`
   } else {
-    return `https://spookyswap.finance/swap`
+    return `https://spookyswap.finance/swap?inputCurrency=${
+      token0Address === '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83' ? 'FTM' : token0Address
+      }&outputCurrency=${token1Address === '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83' ? 'FTM' : token1Address}`
   }
 }
-/*
-?inputCurrency=${token0Address === '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83' ? 'FTM' : token0Address
-      }&outputCurrency=${token1Address === '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83' ? 'FTM' : token1Address}`
-      */
 
 export function getMiningPoolLink(token0Address) {
   return `https://spookyswap.finance`
